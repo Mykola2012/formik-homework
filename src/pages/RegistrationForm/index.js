@@ -10,10 +10,10 @@ function RegistationForm () {
         <a href='https://www.squadhelp.com/' target='_blank' rel='noreferrer'>
           <img src={logo} alt='logo' />
         </a>
-        <button>Login</button>
+        <button className={styles.loginBtn}>Login</button>
       </header>
-      <main>
-        <div>
+      <main className={styles.mainRegistarationForm}>
+        <div className={styles.textWrapper}>
           <h2>CREATE AN ACCOUNT</h2>
           <p>We always keep your name and email address private.</p>
         </div>
