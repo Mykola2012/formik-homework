@@ -1,5 +1,7 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import React from 'react';
+import { USER_REGISTRATION_VALIDATION_SCHEMA } from '../../utils/validationSchemas';
+import styles from './UserRegistrationForm.module.scss';
 
 function UserRegistrationForm () {
   const initialValues = {
@@ -21,79 +23,105 @@ function UserRegistrationForm () {
 
   return (
     <>
-      <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={handleSubmit}
+        validationSchema={USER_REGISTRATION_VALIDATION_SCHEMA}
+      >
         {formikProps => {
           return (
-            <Form>
-              <div>
-                <Field
-                  type='text'
-                  name='firstName'
-                  placeholder='First Name'
-                  autoFocus
-                />
-                <ErrorMessage name='firstName' />
+            <Form className={styles.formWrapper}>
+              <div className={styles.inputWrapper}>
+                <Field type='text' name='firstName' placeholder='First Name' />
+                <ErrorMessage name='firstName'>
+                  {msg => <div className={styles.errorMessageLeft}>{msg}</div>}
+                </ErrorMessage>
 
                 <Field type='text' name='lastName' placeholder='Last Name' />
-                <ErrorMessage name='lastName' />
+                <ErrorMessage name='lastName'>
+                  {msg => <div className={styles.errorMessageRight}>{msg}</div>}
+                </ErrorMessage>
               </div>
 
-              <div>
+              <div className={styles.inputWrapper}>
                 <Field
                   type='text'
                   name='displayName'
                   placeholder='Display Name'
                 />
-                <ErrorMessage name='displayName' />
+                <ErrorMessage name='displayName'>
+                  {msg => <div className={styles.errorMessageLeft}>{msg}</div>}
+                </ErrorMessage>
 
                 <Field
                   type='email'
                   name='emailAddress'
                   placeholder='Email Address'
                 />
-                <ErrorMessage name='emailAddress' />
+                <ErrorMessage name='emailAddress'>
+                  {msg => <div className={styles.errorMessageRight}>{msg}</div>}
+                </ErrorMessage>
               </div>
 
-              <div>
+              <div className={styles.inputWrapper}>
                 <Field type='password' name='password' placeholder='Password' />
-                <ErrorMessage name='password' />
+                <ErrorMessage name='password'>
+                  {msg => <div className={styles.errorMessageLeft}>{msg}</div>}
+                </ErrorMessage>
 
                 <Field
                   type='password'
                   name='passwordConfirmation'
                   placeholder='Password Confirmation'
                 />
-                <ErrorMessage name='passwordConfirmation' />
+                <ErrorMessage name='passwordConfirmation'>
+                  {msg => <div className={styles.errorMessageRight}>{msg}</div>}
+                </ErrorMessage>
               </div>
 
-              <div>
+              <div className={styles.inputRadioWrapper}>
                 <Field type='radio' name='statusUser' value='buyer' />
-                <div>
-                  <h3>Join As a Buyer</h3>
-                  <p>
+
+                <div className={styles.infoTextRadio}>
+                  <h3 className={styles.titleRadio}>Join As a Buyer</h3>
+                  <p className={styles.textRadio}>
                     I am looking for a Name, Logo or Tagline for my business,
                     brand or product.
                   </p>
                 </div>
               </div>
-              <div>
+              <div className={styles.inputRadioWrapper}>
                 <Field type='radio' name='statusUser' value='seller' />
-                <div>
-                  <h3>Join As a Creative or Marketplace Seller</h3>
-                  <p>
+                <div className={styles.infoTextRadio}>
+                  <h3 className={styles.titleRadio}>
+                    Join As a Creative or Marketplace Seller
+                  </h3>
+                  <p className={styles.textRadio}>
                     I plan to submit name ideas, Logo designs or sell names in
                     Domain Marketplace.
                   </p>
                 </div>
               </div>
-              <div>
+              <ErrorMessage name='statusUser'>
+                {msg => (
+                  <div className={styles.errorMessageStatusUser}>{msg}</div>
+                )}
+              </ErrorMessage>
+              <div className={styles.checkboxWrapper}>
                 <Field type='checkbox' name='isMarketing' />
+                <ErrorMessage name='isMarketing'>
+                  {msg => (
+                    <div className={styles.errorMessageIsMarketing}>{msg}</div>
+                  )}
+                </ErrorMessage>
                 <p>
                   Allow Squadhelp to send marketing/promotional offers from time
                   to time
                 </p>
               </div>
-              <button type='submit'>Create account</button>
+              <button className={styles.createBtn} type='submit'>
+                Create account
+              </button>
             </Form>
           );
         }}

@@ -4,7 +4,7 @@
   margin: 0 auto;
 }
 
-%main-color {
+%main-color-font {
   color: rgb(255, 255, 255);
 }
 
@@ -14,7 +14,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 35px 30px;
+  padding: 45px 38px;
+}
+
+.registrationHeader a > img {
+  width: 145px;
 }
 
 .loginBtn {
@@ -25,10 +29,11 @@
   border-radius: 4px;
   font-size: 18px;
   font-weight: 600;
+  cursor: pointer;
 }
 
 .mainRegistarationForm {
-  @extend %container, %main-color;
+  @extend %container, %main-color-font;
   margin-top: 30px;
   display: flex;
   flex-direction: column;
@@ -36,13 +41,18 @@
   text-align: center;
 }
 
+.textWrapper {
+  max-width: 500px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 27px;
+}
+
 .textWrapper h2 {
   font-size: 38px;
   font-weight: 600;
 }
 
-.textWrapper {
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 27px;
+.textWrapper p {
+  padding: 0 40px;
 }
