@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import React from 'react';
 import { USER_REGISTRATION_VALIDATION_SCHEMA } from '../../utils/validationSchemas';
@@ -79,7 +80,12 @@ function UserRegistrationForm () {
                 </ErrorMessage>
               </div>
 
-              <div className={styles.inputRadioWrapper}>
+              <div
+                className={classNames(
+                  styles.inputRadioWrapper,
+                  styles.inputRadioWrapperTop
+                )}
+              >
                 <Field type='radio' name='statusUser' value='buyer' />
 
                 <div className={styles.infoTextRadio}>
@@ -101,19 +107,16 @@ function UserRegistrationForm () {
                     Domain Marketplace.
                   </p>
                 </div>
-              </div>
-              <ErrorMessage name='statusUser'>
-                {msg => (
-                  <div className={styles.errorMessageStatusUser}>{msg}</div>
-                )}
-              </ErrorMessage>
-              <div className={styles.checkboxWrapper}>
-                <Field type='checkbox' name='isMarketing' />
-                <ErrorMessage name='isMarketing'>
+                <ErrorMessage name='statusUser'>
                   {msg => (
-                    <div className={styles.errorMessageIsMarketing}>{msg}</div>
+                    <div className={styles.errorMessageStatusUser}>{msg}</div>
                   )}
                 </ErrorMessage>
+              </div>
+
+              <div className={styles.checkboxWrapper}>
+                <Field type='checkbox' name='isMarketing' />
+
                 <p>
                   Allow Squadhelp to send marketing/promotional offers from time
                   to time

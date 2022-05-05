@@ -27,12 +27,12 @@ export const USER_REGISTRATION_VALIDATION_SCHEMA = yup.object({
     .string()
     .required('Please Enter your password')
     .matches(
-      '^(?=.*[A-Za-z])(?=.*d)(?=.*[@$!%*#?&])[A-Za-zd@$!%*#?&]{8,}$',
+      '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})',
       'Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character'
     ),
   passwordConfirmation: yup
     .string()
-    .required()
+    .required('PasswordConfirmation is a required field')
     .oneOf([yup.ref('password'), null], 'Passwords must match'),
   statusUser: yup.string().required('A radio option is required'),
 });

@@ -23,6 +23,22 @@
   left: 305px;
 }
 
+.errorMessageLeft {
+  @extend %position-error-message-left;
+  @extend %style-error-message;
+}
+
+.errorMessageRight {
+  @extend %position-error-message-right;
+  @extend %style-error-message;
+}
+
+.errorMessageStatusUser {
+  top: 77px;
+  left: 190px;
+  @extend %style-error-message;
+}
+
 .formWrapper {
   max-width: 600px;
 }
@@ -34,16 +50,6 @@
   padding: 20px 0;
 }
 
-.errorMessageLeft {
-  @extend %position-error-message-left;
-  @extend %style-error-message;
-}
-
-.errorMessageRight {
-  @extend %position-error-message-right;
-  @extend %style-error-message;
-}
-
 .inputWrapper input {
   font-size: 16px;
   color: #9ca8b7;
@@ -53,11 +59,16 @@
 }
 
 .inputRadioWrapper {
+  position: relative;
   @extend %flex-wrapper;
   text-align: left;
   border: 1px solid #fff;
   border-radius: 4px;
   padding: 0 25px;
+}
+
+.inputRadioWrapperTop {
+  margin-top: 47px;
 }
 
 .infoTextRadio {
